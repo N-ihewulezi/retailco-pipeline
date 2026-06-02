@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Date dimension covering 2023-2027 with Nigerian public holidays"
+    columns:
+      - name: date_key
+        description: "YYYYMMDD integer primary key"
+        tests:
+          - not_null
+          - unique
+      - name: full_date
+        description: "Full date value"
+        tests:
+          - not_null
+      - name: is_weekend
+        description: "True if Saturday or Sunday"
+        tests:
+          - not_null
+      - name: is_public_holiday
+        description: "True if Nigerian public holiday"
+        tests:
+          - not_null
+
+  - name: dim_customer
+    description: "SCD2 customer dimension — tracks changes to segment, tier and address"
+    columns:
+      - name: customer_sk
+        description: "Surrogate key — primary key for this dimension"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Natural key from source system"
+        tests:
+          - not_null
+      - name: is_current
+        description: "True if this is the current active record"
+        tests:
+          - not_null
+      - name: valid_from
+        description: "Start timestamp of this version"
+        tests:
+          - not_null
+
+  - name: dim_product
+    description: "SCD2 product dimension — tracks changes to price and category"
+    columns:
+      - name: product_sk
+        description: "Surrogate key — primary key for this dimension"
+        tests:
+          - not_null
+          - unique
+      - name: product_id
+        description: "Natural key from source system"
+        tests:
+          - not_null
+      - name: is_current
+        description: "True if this is the current active record"
+        tests:
+          - not_null
+
+  - name: dim_store
+    description: "Store dimension — four RetailCo locations across Nigeria"
+    columns:
+      - name: store_sk
+        description: "Surrogate key — primary key for this dimension"
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: "Natural key from source system"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_employee
+    description: "Employee dimension — linked to stores via store_sk"
+    columns:
+      - name: employee_sk
+        description: "Surrogate key — primary key for this dimension"
+        tests:
+          - not_null
+          - unique
+      - name: employee_id
+        description: "Natural key from source system"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_payment_method
+    description: "Payment method dimension — cash, card, transfer, mobile money, USSD"
+    columns:
+      - name: payment_method_sk
+        description: "Surrogate key — primary key for this dimension"
+        tests:
+          - not_null
+          - unique
+      - name: payment_method_id
+        description: "Natural key from source system"
+        tests:
+          - not_null
+          - unique
