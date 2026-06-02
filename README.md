@@ -622,6 +622,11 @@ Confirm `retailco_warehouse` shows status Up and healthy.
 
 ---
 
-## Nkechi Ihewulezi
+## Author
 
-**Data Analyst*
+Nkechi Ihewulezi
+
+Data Analyst | SQL | Python | dbt | Airflow | PostgreSQL | Power BI
+
+GitHub: https://github.com/N-ihewulezi
+LinkedIn: https://www.linkedin.com/in/nkechi-ihewulezi
