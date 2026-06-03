@@ -46,3 +46,7 @@ coverage.xml
 
 # Temporary
 tempCodeRunnerFile.py
+
+# logs file
+logs/
+dbt_project/.user.yml
