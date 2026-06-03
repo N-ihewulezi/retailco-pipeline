@@ -2,27 +2,44 @@ services:
   postgres_lake:
     image: postgres:17
     container_name: retailco_lake
+
     environment:
       POSTGRES_DB: retailco_lake
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+
     ports:
       - "5435:5432"
+
     volumes:
       - lake_data:/var/lib/postgresql/data
+
+    networks:
+      - retailco_network
 
   postgres_warehouse:
     image: postgres:17
     container_name: retailco_warehouse
+
     environment:
       POSTGRES_DB: retailco_warehouse
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+
     ports:
       - "5436:5432"
+
     volumes:
       - warehouse_data:/var/lib/postgresql/data
+
+    networks:
+      - retailco_network
 
 volumes:
   lake_data:
   warehouse_data:
+
+networks:
+  retailco_network:
+    external: true
+    name: retailco-pipeline_default

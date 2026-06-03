@@ -1,0 +1,21 @@
+retailco:
+  outputs:
+    dev:
+      type: postgres
+      host: "127.0.0.1"
+      port: 5436
+      user: postgres
+      password: postgres
+      dbname: retailco_warehouse
+      schema: raw
+      threads: 4
+    docker:
+      type: postgres
+      host: "retailco_warehouse"
+      port: 5432
+      user: postgres
+      password: postgres
+      dbname: retailco_warehouse
+      schema: raw
+      threads: 4
+  target: dev

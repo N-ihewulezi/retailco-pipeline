@@ -84,7 +84,7 @@ with DAG(
     default_args=default_args,
     start_date=datetime(2025, 1, 1),
     schedule="@daily",
-    catchup=True,
+    catchup=False,
     max_active_runs=1,
     tags=["retailco", "master"],
 ) as dag:
@@ -112,12 +112,10 @@ with DAG(
     # ── dlt Load ──────────────────────────────────────────────────
     dlt_load_task = PythonOperator(
         task_id="dlt_load",
-        bash_command=f"""
-        cd {DBT_PROJECT_DIR} &&
-        dbt snapshot --profiles-dir .
-        """,
-        execution_timeout=timedelta(minutes=20)
+        python_callable=run_dlt,
+        execution_timeout=timedelta(minutes=20),
     )
+   
 
     # ── dbt Snapshot ──────────────────────────────────────────────
     dbt_snapshot_task = BashOperator(
