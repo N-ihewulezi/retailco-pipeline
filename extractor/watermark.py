@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 def get_connection():
     return psycopg2.connect(
-        host=os.getenv("LAKE_DB_HOST", "127.0.0.1"),
-        port=int(os.getenv("LAKE_DB_PORT", 5435)),
+        host=os.getenv("LAKE_DB_HOST", "retailco_lake"),
+        port=int(os.getenv("LAKE_DB_PORT", 5432)),
         dbname=os.getenv("LAKE_DB_NAME", "retailco_lake"),
         user=os.getenv("LAKE_DB_USER", "postgres"),
         password=os.getenv("LAKE_DB_PASSWORD", "postgres")

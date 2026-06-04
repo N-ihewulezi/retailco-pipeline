@@ -55,7 +55,7 @@ with DAG(
     default_args=default_args,
     start_date=datetime(2025, 1, 1),
     schedule="@daily",
-    catchup=True,
+    catchup=False,
     tags=["retailco", "extract"],
 ) as dag:
 
