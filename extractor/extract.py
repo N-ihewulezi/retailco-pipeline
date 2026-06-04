@@ -28,7 +28,7 @@ def extract_entity(client, entity):
         params["updated_after"] = watermark
         logger.info(f"Using watermark: {watermark}")
 
-    records = paginate(client, f"/{entity}/", params=params)
+    records = paginate(client, f"/api/v1/{entity}/", params=params)
 
     if not records:
         logger.info(f"No new records found for {entity}.")
