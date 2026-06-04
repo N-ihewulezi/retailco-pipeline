@@ -29,7 +29,7 @@ Warehouse PostgreSQL — schema: staging
       ↓  dbt mart models (dimensions + facts)
 Warehouse PostgreSQL — schema: raw_marts
 ```
-**[View the Architectural Diagram](design/Retailco_Architechtural Diagram.png)**
+**![View the Architectural Diagram](design/Retailco_Architechtural Diagram.png)**
 
 All components run inside Docker containers and are orchestrated by Apache Airflow 2.9.0 on a daily schedule.
 
