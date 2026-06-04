@@ -287,6 +287,7 @@ Password: postgres
 Schema:   raw_marts
 ```
 
+<img width="2642" height="1825" alt="image" src="https://github.com/user-attachments/assets/76ad9eb4-3d66-48e1-bf33-5149a0851742" />
 
 
 
