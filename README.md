@@ -151,16 +151,20 @@ Create a `.env` file in the root folder with the following variables:
 ```
 ERP_BASE_URL=https://hngstage8da-55c7f5f769c8.herokuapp.com
 ERP_API_KEY=your_api_key_here
-LAKE_HOST=localhost
-LAKE_PORT=5435
-LAKE_DB=retailco_lake
-LAKE_USER=postgres
-LAKE_PASSWORD=postgres
-WAREHOUSE_HOST=localhost
-WAREHOUSE_PORT=5436
-WAREHOUSE_DB=retailco_warehouse
-WAREHOUSE_USER=postgres
-WAREHOUSE_PASSWORD=postgres
+LAKE_DB_HOST=retailco_lake
+LAKE_DB_PORT=5432
+LAKE_DB_NAME=retailco_lake
+LAKE_DB_USER=postgres
+LAKE_DB_PASSWORD=postgres
+
+WAREHOUSE_DB_HOST=retailco_warehouse
+WAREHOUSE_DB_PORT=5432
+WAREHOUSE_DB_NAME=retailco_warehouse
+WAREHOUSE_DB_USER=postgres
+WAREHOUSE_DB_PASSWORD=postgres
+
+LAKE_CONN=postgresql://postgres:postgres@retailco_lake:5432/retailco_lake
+WAREHOUSE_CONN=postgresql://postgres:postgres@retailco_warehouse:5432/retailco_warehouse
 ```
 
 ### Step 3: Start the databases
@@ -185,7 +189,7 @@ cd airflow
 docker-compose -f docker-compose-airflow.yml up -d
 ```
 
-Wait 60 seconds then verify:
+Wait 60 seconds, then verify:
 ```bash
 docker ps
 ```
@@ -205,7 +209,8 @@ Password: admin
 ```
 
 ---
-
+![Airflow UI](airflow/airflow_diagram.png)
+---
 ## How to Run the Pipeline
 
 ### Option 1: Airflow UI (recommended)
